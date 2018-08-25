@@ -4,7 +4,7 @@
 
 import Foundation
 
-class MulticastCallbackNode<CallbackType>: ReferenceManaging {
+public class MulticastCallbackNode<CallbackType>: ReferenceManaging {
     typealias CallbackReference = AutoUnregisteringReference<UUID>
     
     private var callbacks: [UUID: CallbackType] = [:]
