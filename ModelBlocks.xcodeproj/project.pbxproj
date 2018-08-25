@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E008B2B221314D6000198E33 /* SimpleAsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008B2B121314D6000198E33 /* SimpleAsynchronousOperation.swift */; };
 		E008B2B421314D9B00198E33 /* SimpleAsynchronousOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008B2B321314D9B00198E33 /* SimpleAsynchronousOperationTests.swift */; };
+		E008B2C42131960C00198E33 /* MulticastCallbackNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008B2C32131960C00198E33 /* MulticastCallbackNode.swift */; };
+		E008B2C6213197DF00198E33 /* MulticastCallbackNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008B2C5213197DF00198E33 /* MulticastCallbackNodeTests.swift */; };
 		E0CE8AA621313973000CD93F /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CE8A9C21313973000CD93F /* ModelBlocks.framework */; };
 		E0CE8AAB21313973000CD93F /* ModelBlocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE8AAA21313973000CD93F /* ModelBlocksTests.swift */; };
 		E0CE8AAD21313973000CD93F /* ModelBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = E0CE8A9F21313973000CD93F /* ModelBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		E008B2B121314D6000198E33 /* SimpleAsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAsynchronousOperation.swift; sourceTree = "<group>"; };
 		E008B2B321314D9B00198E33 /* SimpleAsynchronousOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAsynchronousOperationTests.swift; sourceTree = "<group>"; };
+		E008B2C32131960C00198E33 /* MulticastCallbackNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastCallbackNode.swift; sourceTree = "<group>"; };
+		E008B2C5213197DF00198E33 /* MulticastCallbackNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastCallbackNodeTests.swift; sourceTree = "<group>"; };
 		E0CE8A9C21313973000CD93F /* ModelBlocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModelBlocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0CE8A9F21313973000CD93F /* ModelBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelBlocks.h; sourceTree = "<group>"; };
 		E0CE8AA021313973000CD93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 			children = (
 				E0CE8A9F21313973000CD93F /* ModelBlocks.h */,
 				E008B2B121314D6000198E33 /* SimpleAsynchronousOperation.swift */,
+				E008B2C32131960C00198E33 /* MulticastCallbackNode.swift */,
 				E0CE8AA021313973000CD93F /* Info.plist */,
 			);
 			path = ModelBlocks;
@@ -87,6 +92,7 @@
 			children = (
 				E0CE8AAA21313973000CD93F /* ModelBlocksTests.swift */,
 				E008B2B321314D9B00198E33 /* SimpleAsynchronousOperationTests.swift */,
+				E008B2C5213197DF00198E33 /* MulticastCallbackNodeTests.swift */,
 				E0CE8AAC21313973000CD93F /* Info.plist */,
 			);
 			path = ModelBlocksTests;
@@ -202,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E008B2B221314D6000198E33 /* SimpleAsynchronousOperation.swift in Sources */,
+				E008B2C42131960C00198E33 /* MulticastCallbackNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E008B2C6213197DF00198E33 /* MulticastCallbackNodeTests.swift in Sources */,
 				E0CE8AAB21313973000CD93F /* ModelBlocksTests.swift in Sources */,
 				E008B2B421314D9B00198E33 /* SimpleAsynchronousOperationTests.swift in Sources */,
 			);
