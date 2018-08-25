@@ -4,27 +4,56 @@
 
 import Foundation
 
-class MulticastCallbackNode<CallbackType> {
-    typealias CallbackToken = Any
+class MulticastCallbackNode<CallbackType>: ReferenceManaging {
+    typealias CallbackReference = AutoUnregisteringReference<UUID>
     
     private var callbacks: [UUID: CallbackType] = [:]
-    func add(_ callback: CallbackType) -> CallbackToken {
+    func add(_ callback: CallbackType) -> CallbackReference {
         let uuid = UUID()
         callbacks[uuid] = callback
-        return uuid
+        return AutoUnregisteringReference(referenceID: uuid, referenceManager: self)
     }
     
     func invokeEach(_ invocation: (CallbackType)->()) {
         callbacks.values.forEach{invocation($0)}
     }
     
-    func remove(with token: Any) {
-        if let uuid = token as? UUID {
-            callbacks.removeValue(forKey: uuid)
+    func remove(with reference: Any) {
+        if let ref = reference as? CallbackReference {
+            remove(with: ref.referenceID)
+        } else if let uuid = reference as? UUID {
+            remove(with: uuid)
+        } else {
+            assertionFailure("[MulticastCallbackNode] Remove with unknown token type")
         }
+    }
+    
+    private func remove(with referenceID: UUID) {
+        callbacks.removeValue(forKey: referenceID)
     }
     
     var isEmpty: Bool {
         return callbacks.isEmpty
+    }
+}
+
+protocol ReferenceManaging: AnyObject{
+    func remove(with reference: Any)
+}
+
+class AutoUnregisteringReference<ReferenceID> {
+    let referenceID: ReferenceID
+    let referenceManager: ReferenceManaging?
+    init(referenceID: ReferenceID, referenceManager: ReferenceManaging) {
+        self.referenceID = referenceID
+        self.referenceManager = referenceManager
+    }
+    
+    func unregister() {
+        referenceManager?.remove(with: self)
+    }
+    
+    deinit {
+        unregister()
     }
 }

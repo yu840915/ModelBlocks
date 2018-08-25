@@ -52,4 +52,34 @@ class MulticastCallbackNodeTests: XCTestCase {
         XCTAssertNotNil(token1)
         XCTAssertNotNil(token2)
     }
+    
+    func testAutoUnregistration() {
+        var token: Any? = node.add {}
+        
+        XCTAssertFalse(node.isEmpty)
+        XCTAssertNotNil(token)
+        token = nil
+        XCTAssertTrue(node.isEmpty)
+    }
+    
+    func testUnregisteringCallbackWontAffectOther() {
+        var counter1 = 0
+        var counter2 = 0
+        
+        let token1 = node.add {
+            counter1 += 1
+        }
+        var token2: Any? = node.add {
+            counter2 += 1
+        }
+        XCTAssertNotNil(token1)
+        XCTAssertNotNil(token2)
+
+        node.invokeEach{$0()}
+        token2 = nil
+        node.invokeEach{$0()}
+
+        XCTAssertEqual(counter1, 2)
+        XCTAssertEqual(counter2, 1)
+    }
 }
