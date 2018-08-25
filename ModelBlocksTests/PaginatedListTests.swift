@@ -32,11 +32,12 @@ class PaginatedListTests: XCTestCase {
     func testCallbackOnReloadFinish() {
         let  list = PaginatedList(operationFactory: AlwaysSucceedFetchingOperationFactory())
         var counter = 0
-        list.didFetchItems = {
+        let ref = list.addItemDidFetchHandler {
             counter += 1
         }
         list.reload()
         XCTAssertEqual(counter, 1)
+        XCTAssertNotNil(ref)
     }
     
     func testLoadMore() {
@@ -72,7 +73,7 @@ class PaginatedListTests: XCTestCase {
         let  list = PaginatedList(operationFactory: AlwaysFailFetchingOperationFactory())
         var counter = 0
         var error: Error?
-        list.didFailFetching = { err in
+        let ref = list.addFetchingFailureHandler { (err) in
             counter += 1
             error = err
         }
@@ -80,6 +81,7 @@ class PaginatedListTests: XCTestCase {
         XCTAssertEqual(counter, 1)
         XCTAssertNotNil(error)
         XCTAssertTrue(list.items.isEmpty)
+        XCTAssertNotNil(ref)
     }
 }
 

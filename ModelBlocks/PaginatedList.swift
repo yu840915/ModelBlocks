@@ -26,8 +26,14 @@ public protocol FailableOperationType: AnyObject {
 
 open class PaginatedList<FetchingOperationFactory: PaginatedFetchingOperationFactoryType> {
     let operationFactory: FetchingOperationFactory
-    var didFetchItems: (()->())?
-    var didFailFetching: ((Error?)->())?
+    let itemDidFetchCallbacks = MulticastCallbackNode<()->()>()
+    let fetchingFailureCallbacks = MulticastCallbackNode<(Error?)->()>()
+    func addItemDidFetchHandler(_ handler:@escaping ()->()) -> Any {
+        return itemDidFetchCallbacks.add(handler)
+    }
+    func addFetchingFailureHandler(_ handler:@escaping (Error?)->()) -> Any {
+        return fetchingFailureCallbacks.add(handler)
+    }
     
     private(set) var items: [FetchingOperationFactory.OperationType.ItemType] = []
     
@@ -76,14 +82,14 @@ open class PaginatedList<FetchingOperationFactory: PaginatedFetchingOperationFac
         } else {
             items += op.items
         }
-        didFetchItems?()
+        itemDidFetchCallbacks.invokeEach{$0()}
     }
     
     private func fetchDidFail(_ op: FetchingOperationFactory.OperationType) {
         if !op.isBegining {
             nextPageFetchingOperation = op.retryOperation as? FetchingOperationFactory.OperationType
         }
-        didFailFetching?(op.error)
+        fetchingFailureCallbacks.invokeEach{$0(op.error)}
     }
     
     func loadMoreIfAllowed() {
