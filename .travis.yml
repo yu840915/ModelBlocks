@@ -2,3 +2,6 @@ language: swift
 xcode_project: ModelBlocks.xcodeproj
 xcode_scheme: ModelBlocks
 xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
