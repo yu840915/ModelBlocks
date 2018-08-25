@@ -5,20 +5,20 @@
 import Foundation
 
 public class MulticastCallbackNode<CallbackType>: ReferenceManaging {
-    typealias CallbackReference = AutoUnregisteringReference<UUID>
+    public typealias CallbackReference = AutoUnregisteringReference<UUID>
     
     private var callbacks: [UUID: CallbackType] = [:]
-    func add(_ callback: CallbackType) -> CallbackReference {
+    public func add(_ callback: CallbackType) -> CallbackReference {
         let uuid = UUID()
         callbacks[uuid] = callback
         return AutoUnregisteringReference(referenceID: uuid, referenceManager: self)
     }
     
-    func invokeEach(_ invocation: (CallbackType)->()) {
+    public func invokeEach(_ invocation: (CallbackType)->()) {
         callbacks.values.forEach{invocation($0)}
     }
     
-    func remove(with reference: Any) {
+    public func remove(with reference: Any) {
         if let ref = reference as? CallbackReference {
             remove(with: ref.referenceID)
         } else if let uuid = reference as? UUID {

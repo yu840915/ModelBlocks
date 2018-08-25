@@ -8,7 +8,7 @@ protocol ReferenceManaging: AnyObject{
     func remove(with reference: Any)
 }
 
-class AutoUnregisteringReference<ReferenceID> {
+public class AutoUnregisteringReference<ReferenceID> {
     let referenceID: ReferenceID
     let referenceManager: ReferenceManaging?
     init(referenceID: ReferenceID, referenceManager: ReferenceManaging) {

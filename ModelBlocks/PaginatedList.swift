@@ -28,32 +28,32 @@ open class PaginatedList<FetchingOperationFactory: PaginatedFetchingOperationFac
     let operationFactory: FetchingOperationFactory
     let itemDidFetchCallbacks = MulticastCallbackNode<()->()>()
     let fetchingFailureCallbacks = MulticastCallbackNode<(Error?)->()>()
-    func addItemDidFetchHandler(_ handler:@escaping ()->()) -> Any {
+    public func addItemDidFetchHandler(_ handler:@escaping ()->()) -> Any {
         return itemDidFetchCallbacks.add(handler)
     }
-    func addFetchingFailureHandler(_ handler:@escaping (Error?)->()) -> Any {
+    public func addFetchingFailureHandler(_ handler:@escaping (Error?)->()) -> Any {
         return fetchingFailureCallbacks.add(handler)
     }
     
     private(set) var items: [FetchingOperationFactory.OperationType.ItemType] = []
     
-    init(operationFactory: FetchingOperationFactory) {
+    public init(operationFactory: FetchingOperationFactory) {
         self.operationFactory = operationFactory
     }
     
     fileprivate var currentFetchingOperation: FetchingOperationFactory.OperationType?
     fileprivate var nextPageFetchingOperation: FetchingOperationFactory.OperationType?
-    func reload() {
+    public func reload() {
         if let op = currentFetchingOperation, op.isBegining {
             return
         }
         currentFetchingOperation?.cancel()
         setUpAndStart(operationFactory.makeInitialOperation())
     }
-    var isFetching: Bool {
+    public var isFetching: Bool {
         return currentFetchingOperation != nil
     }
-    var hasMore: Bool {
+    public var hasMore: Bool {
         return nextPageFetchingOperation != nil
     }
     
@@ -92,7 +92,7 @@ open class PaginatedList<FetchingOperationFactory: PaginatedFetchingOperationFac
         fetchingFailureCallbacks.invokeEach{$0(op.error)}
     }
     
-    func loadMoreIfAllowed() {
+    public func loadMoreIfAllowed() {
         guard let next = nextPageFetchingOperation else {
             return
         }
