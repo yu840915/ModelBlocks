@@ -1,7 +1,4 @@
 //
-//  SimpleAsynchronousOperationTests.swift
-//  ModelBlocksTests
-//
 //  Created by 立宣于 on 2018/8/25.
 //
 

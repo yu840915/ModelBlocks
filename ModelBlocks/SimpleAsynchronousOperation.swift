@@ -1,7 +1,4 @@
 //
-//  SimpleAsynchronousOperation.swift
-//  ModelBlocks
-//
 //  Created by 立宣于 on 2018/8/25.
 //
 
