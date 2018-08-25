@@ -36,24 +36,3 @@ class MulticastCallbackNode<CallbackType>: ReferenceManaging {
         return callbacks.isEmpty
     }
 }
-
-protocol ReferenceManaging: AnyObject{
-    func remove(with reference: Any)
-}
-
-class AutoUnregisteringReference<ReferenceID> {
-    let referenceID: ReferenceID
-    let referenceManager: ReferenceManaging?
-    init(referenceID: ReferenceID, referenceManager: ReferenceManaging) {
-        self.referenceID = referenceID
-        self.referenceManager = referenceManager
-    }
-    
-    func unregister() {
-        referenceManager?.remove(with: self)
-    }
-    
-    deinit {
-        unregister()
-    }
-}
