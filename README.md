@@ -26,7 +26,7 @@ This is an abstract class that implements template methods for asynchronous oper
 * Don't forget to check `isCancelled` at begining of method bodies, it's especially true for those being called from callbacks of asynchronouse APIs.
 
 ```Swift
-class : SimpleAsynchronousOperation {
+class SimpleAsynchronousOperation {
 	...
 	
 	override func main() {
