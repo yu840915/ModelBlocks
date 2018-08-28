@@ -4,7 +4,7 @@
 
 import Foundation
 
-protocol ReferenceManaging: AnyObject{
+public protocol ReferenceManaging: AnyObject{
     func remove(with reference: Any)
 }
 
