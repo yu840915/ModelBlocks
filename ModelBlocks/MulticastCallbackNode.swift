@@ -6,7 +6,7 @@ import Foundation
 
 public class MulticastCallbackNode<CallbackType>: ReferenceManaging {
     public typealias CallbackReference = AutoUnregisteringReference<UUID>
-    
+    public init() {}
     private var callbacks: [UUID: CallbackType] = [:]
     public func add(_ callback: CallbackType) -> CallbackReference {
         let uuid = UUID()

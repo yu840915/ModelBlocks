@@ -11,12 +11,12 @@ protocol ReferenceManaging: AnyObject{
 public class AutoUnregisteringReference<ReferenceID> {
     let referenceID: ReferenceID
     let referenceManager: ReferenceManaging?
-    init(referenceID: ReferenceID, referenceManager: ReferenceManaging) {
+    public init(referenceID: ReferenceID, referenceManager: ReferenceManaging) {
         self.referenceID = referenceID
         self.referenceManager = referenceManager
     }
     
-    func unregister() {
+    public func unregister() {
         referenceManager?.remove(with: self)
     }
     
