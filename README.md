@@ -27,7 +27,7 @@ This is an abstract class that implements template methods for asynchronous oper
 
 ```Swift
 class SimpleAsynchronousOperation {
-	...
+	//...
 	
 	override func main() {
 		guard !isCancelled else { return }
@@ -40,7 +40,7 @@ class SimpleAsynchronousOperation {
 		finish()
 	}
 	
-	...
+	//...
 }
 ```
 
@@ -53,7 +53,7 @@ To invoke callbacks, you call `invokeEach()` to get registered callbacks to invo
 
 ```Swift
 class EventSource {
-	...
+	//...
 	
 	let eventACallbacks = MulticastCallbackNode<(EventInfo)->()>()
 	
@@ -61,7 +61,7 @@ class EventSource {
 		eventACallbacks.invokeEach{$0(info)}
 	}
 	
-	...
+	//...
 }
 ```
 
@@ -69,7 +69,7 @@ As the listener, you simply call `add()` on a callback node to register your han
 
 ```Swift
 class EventListener {
-	...
+	//...
 	
 	var eventCallbackRef: Any?
 	
@@ -87,7 +87,7 @@ class EventListener {
 		eventCallbackRef = nil
 	}
 	
-	...
+	//...
 }
 ```
 
