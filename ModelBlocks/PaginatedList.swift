@@ -35,7 +35,7 @@ open class PaginatedList<FetchingOperationFactory: PaginatedFetchingOperationFac
         return fetchingFailureCallbacks.add(handler)
     }
     
-    private(set) var items: [FetchingOperationFactory.OperationType.ItemType] = []
+    public private(set) var items: [FetchingOperationFactory.OperationType.ItemType] = []
     
     public init(operationFactory: FetchingOperationFactory) {
         self.operationFactory = operationFactory
