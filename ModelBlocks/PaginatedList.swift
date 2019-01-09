@@ -9,7 +9,7 @@ public protocol ListingType {
 }
 
 public protocol PaginatedFetchingOperationType: FailableOperationType {
-    var isBegining: Bool {get}
+    var isBeginning: Bool {get}
     var nextPageFetchingOperation: PaginatedFetchingOperationType? {get}
     var retryOperation: PaginatedFetchingOperationType? {get}
 }
@@ -44,7 +44,7 @@ open class PaginatedList<FetchingOperationFactory: PaginatedFetchingOperationFac
     fileprivate var currentFetchingOperation: FetchingOperationFactory.OperationType?
     fileprivate var nextPageFetchingOperation: FetchingOperationFactory.OperationType?
     public func reload() {
-        if let op = currentFetchingOperation, op.isBegining {
+        if let op = currentFetchingOperation, op.isBeginning {
             return
         }
         currentFetchingOperation?.cancel()
@@ -77,7 +77,7 @@ open class PaginatedList<FetchingOperationFactory: PaginatedFetchingOperationFac
     }
     
     private func fetchDidSuccess(_ op: FetchingOperationFactory.OperationType) {
-        if op.isBegining {
+        if op.isBeginning {
             items = op.items
         } else {
             items += op.items
@@ -86,7 +86,7 @@ open class PaginatedList<FetchingOperationFactory: PaginatedFetchingOperationFac
     }
     
     private func fetchDidFail(_ op: FetchingOperationFactory.OperationType) {
-        if !op.isBegining {
+        if !op.isBeginning {
             nextPageFetchingOperation = op.retryOperation as? FetchingOperationFactory.OperationType
         }
         fetchingFailureCallbacks.invokeEach{$0(op.error)}

@@ -98,7 +98,7 @@ extension PaginatedListTests {
             var counter: Int = 0
             var error: Error?
             var success: Bool? = true
-            var isBegining: Bool = true
+            var isBeginning: Bool = true
             var retryOperation: PaginatedFetchingOperationType? {
                 let op = FakeOperation()
                 op.counter = counter
@@ -107,7 +107,7 @@ extension PaginatedListTests {
             var nextPageFetchingOperation: PaginatedFetchingOperationType? {
                 let op = FakeOperation()
                 op.counter = counter + 1
-                op.isBegining = false
+                op.isBeginning = false
                 return op
             }
             var items: [Int] {
@@ -132,7 +132,7 @@ extension PaginatedListTests {
             var items: [Int] = []
             var error: Error?
             var success: Bool?
-            var isBegining: Bool = true
+            var isBeginning: Bool = true
             var retryOperation: PaginatedFetchingOperationType?
             var nextPageFetchingOperation: PaginatedFetchingOperationType?
             override func main() {
@@ -152,7 +152,7 @@ extension PaginatedListTests {
             var counter: Int = 0
             var error: Error? = NSError(domain: "", code: -1, userInfo: nil)
             var success: Bool? = false
-            var isBegining: Bool = true
+            var isBeginning: Bool = true
             var retryOperation: PaginatedFetchingOperationType?
             var nextPageFetchingOperation: PaginatedFetchingOperationType?
             var items: [Int] = []
