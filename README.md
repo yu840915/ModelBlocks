@@ -71,7 +71,7 @@ As the listener, you simply call `add()` on a callback node to register your han
 class EventListener {
 	//...
 	
-	var eventCallbackRef: Any?
+	var eventCallbackRegistration: Any?
 	
 	func addCallbackToEventSource() {
 		eventCallbackRef = eventSource.add {[weak self] info in 
@@ -90,6 +90,21 @@ class EventListener {
 	//...
 }
 ```
+
+## Reference Tracker
+`ReferenceTracker` is a simple helper managing external references. It  allows client adds and holds reference with variable. 
+
+```
+var reference: Any? = tracker.add("Optional debug info for debug print")
+```
+
+When client has done with the reference and nullifies all the holding variables, it automatically removes the reference. 
+
+```
+reference = nil
+```
+
+It also notifies when references goes from empty to nonempty or vise versa through `isEmptyDidChangeObservers`.
 
 ## PaginatedList
 `PaginatedList` implements template methods dealing with boilerplate tasks ussually encountered by a simple unidirectional paginated list. It provides basic APIs usually needed for this kind of list like `reload()` and `loadMoreIfAllowed()`. You can use it without subclass, but you have to provide your implementation of `FetchingOperationFactory` and `PaginatedFetchingOperationFactoryType` to tell the list where and how to fetch data.
