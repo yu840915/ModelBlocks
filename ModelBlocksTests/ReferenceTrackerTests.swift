@@ -5,9 +5,9 @@
 import XCTest
 import ModelBlocks
 
-class ReferenceSetTests: XCTestCase {
+class ReferenceTrackerTests: XCTestCase {
     
-    let referenceSet = ReferenceSet()
+    let referenceSet = ReferenceTracker()
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

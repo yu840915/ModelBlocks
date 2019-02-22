@@ -4,7 +4,7 @@
 
 import Foundation
 
-public class ReferenceSet: ReferenceManaging {
+public class ReferenceTracker: ReferenceManaging {
     public typealias ReferenceType = AutoUnregisteringReference<UUID>
     
     public init() {}
@@ -33,7 +33,7 @@ public class ReferenceSet: ReferenceManaging {
         } else if let uuid = reference as? UUID {
             remove(with: uuid)
         } else {
-            assertionFailure("[ReferenceSet] Remove with unknown token type")
+            assertionFailure("[ReferenceTracker] Remove with unknown token type")
         }
     }
 
@@ -42,9 +42,9 @@ public class ReferenceSet: ReferenceManaging {
     }
 }
 
-extension ReferenceSet: CustomDebugStringConvertible {
+extension ReferenceTracker: CustomDebugStringConvertible {
     public var debugDescription: String {
-        var value = "[ReferenceSet]{Count: \(references.count)"
+        var value = "[ReferenceTracker]{Count: \(references.count)"
         let infos = references.values.filter{!$0.isEmpty}
         if !infos.isEmpty {
             value += ", infos: [\(infos.joined(separator: ", "))]"

@@ -15,8 +15,8 @@
 		E008B2CA2131B2F900198E33 /* AutoUnregisteringReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008B2C92131B2F900198E33 /* AutoUnregisteringReferenceTests.swift */; };
 		E008B2CE2131C2A600198E33 /* PaginatedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008B2CD2131C2A600198E33 /* PaginatedList.swift */; };
 		E008B2D02131C41E00198E33 /* PaginatedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008B2CF2131C41E00198E33 /* PaginatedListTests.swift */; };
-		E0826BCA221FF19200B973D5 /* ReferenceSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0826BC9221FF19200B973D5 /* ReferenceSetTests.swift */; };
-		E0826BCC221FF23800B973D5 /* ReferenceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0826BCB221FF23800B973D5 /* ReferenceSet.swift */; };
+		E0826BCA221FF19200B973D5 /* ReferenceTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0826BC9221FF19200B973D5 /* ReferenceTrackerTests.swift */; };
+		E0826BCC221FF23800B973D5 /* ReferenceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0826BCB221FF23800B973D5 /* ReferenceTracker.swift */; };
 		E0CE8AA621313973000CD93F /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CE8A9C21313973000CD93F /* ModelBlocks.framework */; };
 		E0CE8AAD21313973000CD93F /* ModelBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = E0CE8A9F21313973000CD93F /* ModelBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -40,8 +40,8 @@
 		E008B2C92131B2F900198E33 /* AutoUnregisteringReferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoUnregisteringReferenceTests.swift; sourceTree = "<group>"; };
 		E008B2CD2131C2A600198E33 /* PaginatedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedList.swift; sourceTree = "<group>"; };
 		E008B2CF2131C41E00198E33 /* PaginatedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedListTests.swift; sourceTree = "<group>"; };
-		E0826BC9221FF19200B973D5 /* ReferenceSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceSetTests.swift; sourceTree = "<group>"; };
-		E0826BCB221FF23800B973D5 /* ReferenceSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceSet.swift; sourceTree = "<group>"; };
+		E0826BC9221FF19200B973D5 /* ReferenceTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceTrackerTests.swift; sourceTree = "<group>"; };
+		E0826BCB221FF23800B973D5 /* ReferenceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceTracker.swift; sourceTree = "<group>"; };
 		E0CE8A9C21313973000CD93F /* ModelBlocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModelBlocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0CE8A9F21313973000CD93F /* ModelBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelBlocks.h; sourceTree = "<group>"; };
 		E0CE8AA021313973000CD93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 				E0CE8A9F21313973000CD93F /* ModelBlocks.h */,
 				E008B2B121314D6000198E33 /* SimpleAsynchronousOperation.swift */,
 				E008B2C32131960C00198E33 /* MulticastCallbackNode.swift */,
-				E0826BCB221FF23800B973D5 /* ReferenceSet.swift */,
+				E0826BCB221FF23800B973D5 /* ReferenceTracker.swift */,
 				E008B2C72131B2B700198E33 /* AutoUnregisteringReference.swift */,
 				E008B2CD2131C2A600198E33 /* PaginatedList.swift */,
 				E0CE8AA021313973000CD93F /* Info.plist */,
@@ -105,7 +105,7 @@
 			children = (
 				E008B2B321314D9B00198E33 /* SimpleAsynchronousOperationTests.swift */,
 				E008B2C5213197DF00198E33 /* MulticastCallbackNodeTests.swift */,
-				E0826BC9221FF19200B973D5 /* ReferenceSetTests.swift */,
+				E0826BC9221FF19200B973D5 /* ReferenceTrackerTests.swift */,
 				E008B2C92131B2F900198E33 /* AutoUnregisteringReferenceTests.swift */,
 				E008B2CF2131C41E00198E33 /* PaginatedListTests.swift */,
 				E0CE8AAC21313973000CD93F /* Info.plist */,
@@ -226,7 +226,7 @@
 				E008B2B221314D6000198E33 /* SimpleAsynchronousOperation.swift in Sources */,
 				E008B2C42131960C00198E33 /* MulticastCallbackNode.swift in Sources */,
 				E008B2CE2131C2A600198E33 /* PaginatedList.swift in Sources */,
-				E0826BCC221FF23800B973D5 /* ReferenceSet.swift in Sources */,
+				E0826BCC221FF23800B973D5 /* ReferenceTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +238,7 @@
 				E008B2C6213197DF00198E33 /* MulticastCallbackNodeTests.swift in Sources */,
 				E008B2B421314D9B00198E33 /* SimpleAsynchronousOperationTests.swift in Sources */,
 				E008B2D02131C41E00198E33 /* PaginatedListTests.swift in Sources */,
-				E0826BCA221FF19200B973D5 /* ReferenceSetTests.swift in Sources */,
+				E0826BCA221FF19200B973D5 /* ReferenceTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
