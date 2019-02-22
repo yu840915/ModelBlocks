@@ -94,13 +94,13 @@ class EventListener {
 ## Reference Tracker
 `ReferenceTracker` is a simple helper managing external references. It  allows client adds and holds reference with variable. 
 
-```
+```Swift
 var reference: Any? = tracker.add("Optional debug info for debug print")
 ```
 
 When client has done with the reference and nullifies all the holding variables, it automatically removes the reference. 
 
-```
+```Swift
 reference = nil
 ```
 
