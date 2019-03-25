@@ -43,6 +43,23 @@ class CompoundValidatorTests: XCTestCase {
             XCTFail("Unexpected error: \(error)")
         }
     }
+    
+    func testNoThrow() {
+        let validator = CompoundValidator([TextInputValidator(), TextInputValidator()])
+        XCTAssertNoThrow(try validator.validate("hello"))
+    }
+    
+    func testShortCircuitForAndValidation() {
+        let validator = AndValidator([AlwaysThrowValidator(), AlwaysThrowValidator()])
+        do {
+            try validator.validate("hello")
+            XCTFail("Expect throws here")
+        } catch let error as InputError {
+            XCTAssertNil(error.underlyingErrors)
+        } catch let error {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
 }
 
 extension CompoundValidatorTests {

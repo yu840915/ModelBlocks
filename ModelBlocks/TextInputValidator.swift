@@ -37,6 +37,12 @@ open class CompoundValidator: TextInputValidator {
     }
 }
 
+open class AndValidator: CompoundValidator {
+    open override func validate(_ input: String) throws {
+        try validators.forEach{try $0.validate(input)}
+    }
+}
+
 open class InputError: NSError {
     static let MBUnderlyingErrorsKey = "MBUnderlyingErrorsKey"
     public init(localizedDescription: String, errors: [Error] = [], domain: String = Bundle.main.bundleIdentifier ?? "framework.modelblocks", code: Int = 400) {
