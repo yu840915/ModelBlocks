@@ -49,7 +49,7 @@ class CompoundValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("hello"))
     }
     
-    func testShortCircuitForAndValidation() {
+    func testShortCircuitWithAndValidation() {
         let validator = AndValidator([AlwaysThrowValidator(), AlwaysThrowValidator()])
         do {
             try validator.validate("hello")
@@ -59,6 +59,22 @@ class CompoundValidatorTests: XCTestCase {
         } catch let error {
             XCTFail("Unexpected error: \(error)")
         }
+    }
+    
+    func testNotThrowIfOnePassesWithOrValidation() {
+        let validator1 = OrValidator([TextInputValidator(), AlwaysThrowValidator(), AlwaysThrowValidator()])
+        XCTAssertNoThrow(try validator1.validate("hello"))
+
+        let validator2 = OrValidator([AlwaysThrowValidator(), TextInputValidator(), AlwaysThrowValidator()])
+        XCTAssertNoThrow(try validator2.validate("hello"))
+
+        let validator3 = OrValidator([AlwaysThrowValidator(), AlwaysThrowValidator(), TextInputValidator()])
+        XCTAssertNoThrow(try validator3.validate("hello"))
+    }
+    
+    func testThrowsIfAllFailedWithOrValidation() {
+        let validator = OrValidator([AlwaysThrowValidator(), AlwaysThrowValidator()])
+        XCTAssertThrowsError(try validator.validate("hello"))
     }
 }
 

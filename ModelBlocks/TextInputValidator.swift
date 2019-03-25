@@ -43,6 +43,23 @@ open class AndValidator: CompoundValidator {
     }
 }
 
+open class OrValidator: CompoundValidator {
+    open override func validate(_ input: String) throws {
+        var errors = [Error]()
+        for validator in validators {
+            do {
+                try validator.validate(input)
+                break
+            } catch let error {
+                errors.append(error)
+            }
+        }
+        if !errors.isEmpty && errors.count == validators.count {
+            throw InputError(localizedDescription: multipleErrorTitle, errors: errors)
+        }
+    }
+}
+
 open class InputError: NSError {
     static let MBUnderlyingErrorsKey = "MBUnderlyingErrorsKey"
     public init(localizedDescription: String, errors: [Error] = [], domain: String = Bundle.main.bundleIdentifier ?? "framework.modelblocks", code: Int = 400) {
