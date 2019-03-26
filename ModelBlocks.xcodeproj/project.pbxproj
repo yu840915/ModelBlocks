@@ -19,6 +19,8 @@
 		E0826BCC221FF23800B973D5 /* ReferenceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0826BCB221FF23800B973D5 /* ReferenceTracker.swift */; };
 		E0CE8AA621313973000CD93F /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CE8A9C21313973000CD93F /* ModelBlocks.framework */; };
 		E0CE8AAD21313973000CD93F /* ModelBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = E0CE8A9F21313973000CD93F /* ModelBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0E7F6A022486F5700A5A36F /* TextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E7F69F22486F5700A5A36F /* TextInputValidator.swift */; };
+		E0E7F6A22248764700A5A36F /* CompoundValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E7F6A12248764700A5A36F /* CompoundValidatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		E0CE8AA021313973000CD93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0CE8AA521313973000CD93F /* ModelBlocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelBlocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0CE8AAC21313973000CD93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0E7F69F22486F5700A5A36F /* TextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputValidator.swift; sourceTree = "<group>"; };
+		E0E7F6A12248764700A5A36F /* CompoundValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundValidatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 				E0826BCB221FF23800B973D5 /* ReferenceTracker.swift */,
 				E008B2C72131B2B700198E33 /* AutoUnregisteringReference.swift */,
 				E008B2CD2131C2A600198E33 /* PaginatedList.swift */,
+				E0E7F69F22486F5700A5A36F /* TextInputValidator.swift */,
 				E0CE8AA021313973000CD93F /* Info.plist */,
 			);
 			path = ModelBlocks;
@@ -108,6 +113,7 @@
 				E0826BC9221FF19200B973D5 /* ReferenceTrackerTests.swift */,
 				E008B2C92131B2F900198E33 /* AutoUnregisteringReferenceTests.swift */,
 				E008B2CF2131C41E00198E33 /* PaginatedListTests.swift */,
+				E0E7F6A12248764700A5A36F /* CompoundValidatorTests.swift */,
 				E0CE8AAC21313973000CD93F /* Info.plist */,
 			);
 			path = ModelBlocksTests;
@@ -222,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0E7F6A022486F5700A5A36F /* TextInputValidator.swift in Sources */,
 				E008B2C82131B2B700198E33 /* AutoUnregisteringReference.swift in Sources */,
 				E008B2B221314D6000198E33 /* SimpleAsynchronousOperation.swift in Sources */,
 				E008B2C42131960C00198E33 /* MulticastCallbackNode.swift in Sources */,
@@ -237,6 +244,7 @@
 				E008B2CA2131B2F900198E33 /* AutoUnregisteringReferenceTests.swift in Sources */,
 				E008B2C6213197DF00198E33 /* MulticastCallbackNodeTests.swift in Sources */,
 				E008B2B421314D9B00198E33 /* SimpleAsynchronousOperationTests.swift in Sources */,
+				E0E7F6A22248764700A5A36F /* CompoundValidatorTests.swift in Sources */,
 				E008B2D02131C41E00198E33 /* PaginatedListTests.swift in Sources */,
 				E0826BCA221FF19200B973D5 /* ReferenceTrackerTests.swift in Sources */,
 			);
